@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become: true
+  gather_facts: yes
+
+  vars:
+    exports_share: [ "/mnt/public *(rw,insecure,nohide,all_squash,anonuid=33,no_subtree_check)" ]
+
+  roles:
+  - role: nfs-server
