@@ -9,11 +9,24 @@ Vagrant.configure("2") do |config|
       virtualbox.cpus = "2"
     end
     controller.vm.box = BOX_IMAGE
+    controller.vm.synced_folder '.', '/opt/vagrant/'
     controller.vm.hostname = "controller.ansible.local"
     controller.vm.network :private_network, ip: "192.168.56.250"
     controller.vm.provision "shell", path: "bootstrap.sh"
-    controller.vm.provision "file", source: "key_gen.sh", destination: "/home/vagrant/"
     controller.vm.provision "file", source: "ansible_inventory_init.sh", destination: "/home/vagrant/"
+    controller.vm.provision "file", source: "id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
+    public_key = File.read("id_rsa.pub")
+    controller.vm.provision :shell, :inline =>"
+        echo 'Copying ansible-vm public SSH Keys to the VM'
+        mkdir -p /home/vagrant/.ssh
+        chmod 700 /home/vagrant/.ssh
+        echo '#{public_key}' >> /home/vagrant/.ssh/authorized_keys
+        chmod -R 600 /home/vagrant/.ssh/authorized_keys
+        echo 'Host 192.168.*.*' >> /home/vagrant/.ssh/config
+        echo 'StrictHostKeyChecking no' >> /home/vagrant/.ssh/config
+        echo 'UserKnownHostsFile /dev/null' >> /home/vagrant/.ssh/config
+        chmod -R 600 /home/vagrant/.ssh/config
+        ", privileged: false
   end
 
   (1..HOST_COUNT).each do |i|
@@ -26,6 +39,19 @@ Vagrant.configure("2") do |config|
       hosts.vm.hostname = "host0#{i}.ansible.local"
       hosts.vm.network :private_network, ip: "192.168.56.#{250 + i}"
       hosts.vm.provision "shell", path: "bootstrap.sh"
+      hosts.vm.provision "file", source: "id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
+      public_key = File.read("id_rsa.pub")
+      hosts.vm.provision :shell, :inline =>"
+          echo 'Copying ansible-vm public SSH Keys to the VM'
+          mkdir -p /home/vagrant/.ssh
+          chmod 700 /home/vagrant/.ssh
+          echo '#{public_key}' >> /home/vagrant/.ssh/authorized_keys
+          chmod -R 600 /home/vagrant/.ssh/authorized_keys
+          echo 'Host 192.168.*.*' >> /home/vagrant/.ssh/config
+          echo 'StrictHostKeyChecking no' >> /home/vagrant/.ssh/config
+          echo 'UserKnownHostsFile /dev/null' >> /home/vagrant/.ssh/config
+          chmod -R 600 /home/vagrant/.ssh/config
+          ", privileged: false
     end
   end
 end

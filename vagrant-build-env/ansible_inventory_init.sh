@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# SKIPPING ASKING PERMISSION
+for val in controller host01 host02; do
+      ssh -o StrictHostKeyChecking=no -l vagrant@$val
+done
+
 # CREATE THE INVENTORY FILE
 
 GITHUB_REPO="https://github.com/grizli-beep/ansible-nfs.git"

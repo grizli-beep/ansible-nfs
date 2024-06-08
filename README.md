@@ -68,6 +68,7 @@ $ ansible-playbook playbook-nfs-client.yml
 ### Test environment based on Virtualbox + Vagrant
 For the purpose of creating a demo stand, it is possible to use a combination of **Vagrant** and **VirtualBox**.
 
+
 The stand contains for 3 VMs:
 - Virtual machine for Ansible controller
 - `controller.ansible.local (controller)`
@@ -75,12 +76,12 @@ The stand contains for 3 VMs:
 - `host01.ansible.local (host01)`
 - `host02. ansible.local (host02)`
 
+**Important Note** - you can see the ssh keys in the vagrant-build-env directory. I created them (id_rsa, id_rsa.pub) to put on the nodes via the vagrantfile. You can create your own or use mine
 ```bash
 $ cd vagrant-build-env\
 $ vagrant up
 $ vagrant ssh controller
 
-$ bash ~/key_gen.sh
 $ bash ~/ansible_inventory_init.sh
 $ cd ~/ansible-nfs
 $ ansible-playbook -l servers playbook-nfs-server.yml
