@@ -10,7 +10,7 @@
     - Task description
         - Playbook for nfs server based on Ubuntu and MacOs
         - Playbook for nfs-clients with supporting **systemd** and **automount** for Ubuntu and MacOs
-    - Optional (test environment)
+    - Build test environment (optional)
 
 ## Task description
 
@@ -64,7 +64,7 @@ $ cat playbook-nfs-client.yml
 
 $ ansible-playbook playbook-nfs-client.yml
 ```
-## Optional (test environment)
+## Build test environment (optional)
 ### Test environment based on Virtualbox + Vagrant
 For the purpose of creating a demo stand, it is possible to use a combination of **Vagrant** and **VirtualBox**.
 
