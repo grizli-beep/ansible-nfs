@@ -64,7 +64,7 @@ $ cat playbook-nfs-client.yml
 
 $ ansible-playbook playbook-nfs-client.yml
 ```
-## Optional (test environment)
+## Build test environment (optional)
 ### Test environment based on Virtualbox + Vagrant
 For the purpose of creating a demo stand, it is possible to use a combination of **Vagrant** and **VirtualBox**.
 
