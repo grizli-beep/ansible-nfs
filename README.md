@@ -1,7 +1,7 @@
 # Links
 - [Description of how nfs works, it's configuration, mounting, automounting, etc](https://www.altlinux.org/NFS)
-- [GitHub example how configuration nfs, it's mounting, automounting via autofs and etc](https://github.com/prostopasta/ansible-nfs-roles?tab=readme-ov-file#ansible-роли-для-настройки-nfs-сервера-и-клиента)
 - [Vagrant tutorial](https://devopscube.com/vagrant-tutorial-beginners/)
+- [GitHub example how configuration nfs, it's mounting, automounting via autofs and etc](https://github.com/prostopasta/ansible-nfs-roles?tab=readme-ov-file#ansible-роли-для-настройки-nfs-сервера-и-клиента)
 # Building nfs for server/clients side throught Ansible roles
 
 <!-- TOC -->

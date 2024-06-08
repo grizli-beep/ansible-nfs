@@ -3,7 +3,7 @@
 # CREATE THE INVENTORY FILE
 
 GITHUB_REPO="https://github.com/grizli-beep/ansible-nfs.git"
-PROJECT_DIRECTORY="/home/vagrant/nfs-roles"
+PROJECT_DIRECTORY="/home/vagrant/ansible-nfs"
 
 git clone $GITHUB_REPO
 cd $PROJECT_DIRECTORY || false
