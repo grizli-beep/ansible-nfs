@@ -1,12 +1,13 @@
 ---
-- hosts: localhost
+- hosts: all
   become: true
   gather_facts: yes
 
   vars:
     mounts:
       PublicShare:
-        share: 10.1.1.251:/mnt/public
+        # Added ip server, which create throught vagrant
+        share: 192.168.56.251:/mnt/public
         mount: /opt/publicshare
         type: nfs
         options: auto
