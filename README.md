@@ -16,7 +16,7 @@
 ## Task description
 
 ---
-### Playbook for nfs server based on Ubuntu and MacOs
+### Playbook for nfs server based on Ubuntu
 
 Create an Ansible role to configure the NFS server-side: the role should be able to install the necessary NFS server packages, adjust minimal configuration settings, start the nfs daemon upon initial setup, or restart it in case of any changes to the configuration of an already running NFS server.
 
@@ -38,7 +38,7 @@ $ ansible-playbook playbook-nfs-server.yml
 ```
 ---
 
-### Playbook for nfs-clients with supporting **systemd** and **automount** for Ubuntu and MacOs
+### Playbook for nfs-clients with supporting **systemd** and **automount** for Ubuntu
 
 Create an Ansible role to configure the NFS client-side: the role should be able to install the required packages on the client side, mount the network NFS resource using a Systemd unit, and ideally provide an automount option for the unit.
 
