@@ -25,7 +25,7 @@ $ cat playbook-nfs-server.yml
 ---
 - hosts: all
   become: true
-  gather_facts: yes
+  gather_facts: no
 
   vars:
     exports_share: [ "/mnt/public *(rw,insecure,nohide,all_squash,anonuid=33,no_subtree_check)" ]
@@ -47,7 +47,7 @@ $ cat playbook-nfs-client.yml
 ---
 - hosts: all
   become: true
-  gather_facts: yes
+  gather_facts: no
 
   vars:
     mounts:
